@@ -4,9 +4,12 @@
 
 .signal {
   min-height: 100svh;
+
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
+
   padding: 24px var(--page-padding);
+
   overflow: hidden;
 }
 
@@ -20,11 +23,13 @@
   gap: 24px;
 
   color: var(--color-muted);
+
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
   line-height: 1.4;
   letter-spacing: 0.08em;
+
   text-transform: uppercase;
 }
 
@@ -39,7 +44,9 @@
 .signal__header {
   position: relative;
   z-index: 20;
+
   padding-bottom: 16px;
+
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -49,11 +56,12 @@
 
 .technical-data__frequency {
   grid-column: 10 / 13;
+
   text-align: right;
 }
 
 /* ======================================================
-   TRANSMISSION SCENE
+   TRANSMISSION
 ====================================================== */
 
 .transmission {
@@ -61,22 +69,50 @@
 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
 
   min-height: 0;
+
+  column-gap: 24px;
+
   overflow: hidden;
 }
 
 /* ======================================================
-   GENERIC FRAME
+   FRAMES
 ====================================================== */
 
 .frame {
+  display: none;
+
   grid-column: 1 / -1;
   grid-row: 1;
 
   min-width: 0;
   height: 100%;
+}
+
+/* ======================================================
+   PREVIEW STATES
+====================================================== */
+
+.preview-searching .frame--searching {
+  display: grid;
+}
+
+.preview-detected .frame--detected {
+  display: grid;
+}
+
+.preview-decode .frame--decode {
+  display: grid;
+}
+
+.preview-decode-peak .frame--decode-peak {
+  display: grid;
+}
+
+.preview-message .frame--message {
+  display: grid;
 }
 
 /* ======================================================
@@ -87,11 +123,13 @@
   margin-bottom: 12px;
 
   color: var(--color-muted);
+
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
   line-height: 1.4;
   letter-spacing: 0.08em;
+
   text-transform: uppercase;
 }
 
@@ -100,8 +138,6 @@
 ====================================================== */
 
 .frame--searching {
-  display: none;
-
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr auto 1fr;
 
@@ -115,6 +151,7 @@
   align-self: end;
 
   min-width: 0;
+
   padding-bottom: clamp(40px, 7vh, 88px);
 }
 
@@ -123,6 +160,7 @@
   font-weight: 500;
   line-height: 0.78;
   letter-spacing: -0.065em;
+
   text-transform: uppercase;
 }
 
@@ -136,39 +174,13 @@
   padding-top: 24px;
 
   color: var(--color-muted);
+
   font-family: var(--font-mono);
   font-size: 10px;
   line-height: 1.4;
   letter-spacing: 0.08em;
+
   text-transform: uppercase;
-}
-
-/* ======================================================
-   SIGNAL LINE
-====================================================== */
-
-.signal-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  z-index: 1;
-
-  width: 100%;
-
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.signal-line svg {
-  height: 40px;
-}
-
-.signal-line__path {
-  fill: none;
-  stroke: var(--color-paper);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-  opacity: 0.45;
 }
 
 /* ======================================================
@@ -176,20 +188,18 @@
 ====================================================== */
 
 .frame--detected {
-  display: grid;
-
   position: relative;
+  z-index: 3;
 
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr auto;
 
   column-gap: 24px;
-  align-items: center;
 }
 
 .frame-detected__title {
   position: relative;
-  z-index: 2;
+  z-index: 4;
 
   grid-column: 1 / 8;
   grid-row: 1;
@@ -204,6 +214,7 @@
   font-weight: 500;
   line-height: 0.78;
   letter-spacing: -0.06em;
+
   text-transform: uppercase;
 }
 
@@ -215,37 +226,10 @@
   margin-left: 12%;
 }
 
-/* ======================================================
-   SIGNAL IMAGE
-====================================================== */
-
-.signal-image {
-  position: relative;
-  z-index: 2;
-
-  grid-column: 8 / 13;
-  grid-row: 1;
-
-  align-self: center;
-
-  width: 100%;
-  aspect-ratio: 4 / 5;
-
-  overflow: hidden;
-}
-
-.signal-image__media {
-  width: 100%;
-  height: 100%;
-
-  background: linear-gradient(145deg, #292823 0%, #151513 48%, #37352f 100%);
-}
-
-/* ======================================================
-   DETECTED DATA
-====================================================== */
-
 .frame-detected__data {
+  position: relative;
+  z-index: 4;
+
   grid-column: 1 / 13;
   grid-row: 2;
 
@@ -280,6 +264,371 @@
 }
 
 /* ======================================================
+   FRAME 03 — DECODE
+====================================================== */
+
+.frame--decode {
+  position: relative;
+  z-index: 3;
+
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 1fr auto;
+
+  column-gap: 24px;
+}
+
+.frame-decode__header {
+  position: relative;
+  z-index: 7;
+
+  grid-column: 1 / 13;
+  grid-row: 1;
+
+  align-self: start;
+
+  padding-top: 20px;
+}
+
+.frame-decode__header > :first-child {
+  grid-column: 1 / 4;
+}
+
+.frame-decode__header > :last-child {
+  grid-column: 10 / 13;
+
+  text-align: right;
+}
+
+.frame-decode__data {
+  position: relative;
+  z-index: 7;
+
+  grid-column: 1 / 13;
+  grid-row: 3;
+
+  align-self: end;
+
+  padding-bottom: 24px;
+}
+
+.frame-decode__data > :first-child {
+  grid-column: 1 / 4;
+}
+
+.frame-decode__data > :last-child {
+  grid-column: 10 / 13;
+
+  text-align: right;
+}
+
+/* ======================================================
+   FRAME 04 — DECODE PEAK
+====================================================== */
+
+.frame--decode-peak {
+  position: relative;
+  z-index: 3;
+
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 1fr auto;
+
+  column-gap: 24px;
+}
+
+.frame-decode-peak__header {
+  position: relative;
+  z-index: 7;
+
+  grid-column: 1 / 13;
+  grid-row: 1;
+
+  padding-top: 20px;
+}
+
+.frame-decode-peak__header > :first-child {
+  grid-column: 1 / 4;
+}
+
+.frame-decode-peak__header > :last-child {
+  grid-column: 9 / 13;
+
+  text-align: right;
+}
+
+.frame-decode-peak__data {
+  position: relative;
+  z-index: 7;
+
+  grid-column: 1 / 13;
+  grid-row: 3;
+
+  align-self: end;
+
+  padding-bottom: 24px;
+}
+
+.frame-decode-peak__data > :nth-child(1) {
+  grid-column: 1 / 3;
+}
+
+.frame-decode-peak__data > :nth-child(2) {
+  grid-column: 3 / 6;
+}
+
+.frame-decode-peak__data > :nth-child(3) {
+  grid-column: 9 / 11;
+
+  text-align: right;
+}
+
+.frame-decode-peak__data > :nth-child(4) {
+  grid-column: 11 / 13;
+
+  text-align: right;
+}
+
+/* ======================================================
+   FRAME 05 — MESSAGE
+====================================================== */
+
+.frame--message {
+  position: relative;
+  z-index: 4;
+
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 1fr auto;
+
+  column-gap: 24px;
+}
+
+.frame-message__header {
+  position: relative;
+  z-index: 8;
+
+  grid-column: 1 / 13;
+  grid-row: 1;
+
+  padding-top: 20px;
+}
+
+.frame-message__header > :first-child {
+  grid-column: 1 / 5;
+}
+
+.frame-message__header > :last-child {
+  grid-column: 9 / 13;
+
+  text-align: right;
+}
+
+.frame-message__content {
+  position: relative;
+  z-index: 8;
+
+  grid-column: 1 / 13;
+  grid-row: 2;
+
+  align-self: center;
+}
+
+.frame-message__title {
+  margin: 0;
+
+  font-size: clamp(5rem, 12vw, 12rem);
+  font-weight: 500;
+  line-height: 0.76;
+  letter-spacing: -0.065em;
+
+  text-transform: uppercase;
+}
+
+.frame-message__title span {
+  display: block;
+}
+
+.frame-message__title span:nth-child(1) {
+  margin-left: 0;
+}
+
+.frame-message__title span:nth-child(2) {
+  margin-left: 22%;
+}
+
+.frame-message__title span:nth-child(3) {
+  margin-left: 43%;
+}
+
+.frame-message__data {
+  position: relative;
+  z-index: 8;
+
+  grid-column: 1 / 13;
+  grid-row: 3;
+
+  padding-bottom: 24px;
+}
+
+.frame-message__data > :first-child {
+  grid-column: 1 / 4;
+}
+
+.frame-message__data > :last-child {
+  grid-column: 10 / 13;
+
+  text-align: right;
+}
+
+.preview-message .signal-line {
+  top: 76%;
+  z-index: 3;
+}
+
+.preview-message .signal-line__path {
+  opacity: 0.28;
+}
+
+/* ======================================================
+   SHARED IMAGE
+====================================================== */
+
+.signal-image {
+  position: absolute;
+
+  z-index: 2;
+
+  overflow: hidden;
+
+  opacity: 0;
+  visibility: hidden;
+
+  background: #171714;
+}
+
+.signal-image__media {
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(145deg, #292823 0%, #151513 48%, #37352f 100%);
+}
+
+/* ======================================================
+   IMAGE — DETECTED STATE
+====================================================== */
+
+.preview-detected .signal-image {
+  top: 50%;
+  right: 0;
+
+  width: 41%;
+  max-height: 78%;
+
+  aspect-ratio: 4 / 5;
+
+  transform: translateY(-50%);
+
+  opacity: 1;
+  visibility: visible;
+}
+
+.preview-message .signal-image {
+  top: 50%;
+  right: 4%;
+  left: auto;
+
+  width: 42%;
+  height: 72%;
+
+  transform: translateY(-50%);
+
+  opacity: 0.45;
+  visibility: visible;
+}
+
+/* ======================================================
+   IMAGE — DECODE STATE
+====================================================== */
+
+.preview-decode .signal-image {
+  top: 50%;
+  left: 50%;
+
+  width: min(72%, 980px);
+  height: 68%;
+
+  transform: translate(-50%, -50%);
+
+  opacity: 1;
+  visibility: visible;
+}
+
+.preview-decode-peak .signal-image {
+  top: 50%;
+  left: 50%;
+
+  width: min(82%, 1180px);
+  height: 76%;
+
+  transform: translate(-50%, -50%);
+
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ======================================================
+   SIGNAL LINE
+====================================================== */
+
+.signal-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  z-index: 1;
+
+  width: 100%;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+.signal-line svg {
+  height: 40px;
+}
+
+.signal-line__path {
+  fill: none;
+
+  stroke: var(--color-paper);
+  stroke-width: 1;
+
+  vector-effect: non-scaling-stroke;
+
+  opacity: 0.45;
+}
+
+/* ======================================================
+   SIGNAL LINE — DECODE
+====================================================== */
+
+.preview-decode .signal-line {
+  z-index: 6;
+}
+
+.preview-decode .signal-line__path {
+  opacity: 0.75;
+}
+
+.preview-decode-peak .signal-line {
+  top: 58%;
+  z-index: 6;
+}
+
+.preview-decode-peak .signal-line__path {
+  opacity: 0.85;
+}
+
+/* ======================================================
    FOOTER
 ====================================================== */
 
@@ -307,20 +656,29 @@
 ====================================================== */
 
 @media (max-width: 767px) {
+  /* ====================================================
+     PAGE
+  ==================================================== */
+
   .signal {
     padding-block: 20px;
   }
 
-  /* --------------------------------------------------
-     TECH DATA
-  -------------------------------------------------- */
+  /* ====================================================
+     TECHNICAL DATA
+  ==================================================== */
 
   .technical-data {
     grid-template-columns: repeat(4, 1fr);
+
     column-gap: 12px;
 
     font-size: 10px;
   }
+
+  /* ====================================================
+     HEADER
+  ==================================================== */
 
   .signal__header > :first-child {
     grid-column: 1 / 3;
@@ -330,21 +688,33 @@
     grid-column: 3 / 5;
   }
 
-  /* --------------------------------------------------
+  /* ====================================================
      TRANSMISSION
-  -------------------------------------------------- */
+  ==================================================== */
 
   .transmission {
     grid-template-columns: repeat(4, 1fr);
+
     column-gap: 12px;
   }
 
-  /* --------------------------------------------------
+  /* ====================================================
+     SHARED TYPOGRAPHY
+  ==================================================== */
+
+  .frame__eyebrow {
+    margin-bottom: 8px;
+
+    font-size: 10px;
+  }
+
+  /* ====================================================
      SEARCHING
-  -------------------------------------------------- */
+  ==================================================== */
 
   .frame--searching {
     grid-template-columns: repeat(4, 1fr);
+
     column-gap: 12px;
   }
 
@@ -354,12 +724,6 @@
     min-width: 0;
 
     padding-bottom: 36px;
-  }
-
-  .frame__eyebrow {
-    margin-bottom: 8px;
-
-    font-size: 10px;
   }
 
   .frame-searching__title {
@@ -376,9 +740,9 @@
     padding-top: 20px;
   }
 
-  /* --------------------------------------------------
+  /* ====================================================
      DETECTED
-  -------------------------------------------------- */
+  ==================================================== */
 
   .frame--detected {
     grid-template-columns: repeat(4, 1fr);
@@ -393,36 +757,18 @@
 
     align-self: start;
 
-    padding-top: 56px;
+    padding-top: clamp(40px, 7vh, 64px);
   }
 
   .frame-detected__title h2 {
     font-size: clamp(3.5rem, 17vw, 5rem);
-    line-height: 0.82;
+    line-height: 0.8;
+    letter-spacing: -0.065em;
   }
 
   .frame-detected__title h2 span:last-child {
     margin-left: 0;
   }
-
-  /* --------------------------------------------------
-     IMAGE
-  -------------------------------------------------- */
-
-  .signal-image {
-    grid-column: 1 / 5;
-    grid-row: 2;
-
-    align-self: center;
-    justify-self: end;
-
-    width: 76%;
-    aspect-ratio: 4 / 5;
-  }
-
-  /* --------------------------------------------------
-     DETECTED DATA
-  -------------------------------------------------- */
 
   .frame-detected__data {
     grid-column: 1 / 5;
@@ -441,9 +787,235 @@
     justify-self: end;
   }
 
-  /* --------------------------------------------------
+  /* ====================================================
+     DETECTED IMAGE
+  ==================================================== */
+
+  .preview-detected .signal-image {
+    top: 58%;
+    right: 0;
+
+    width: 74%;
+    max-height: 42vh;
+
+    aspect-ratio: 4 / 5;
+
+    transform: translateY(-50%);
+  }
+
+  /* ====================================================
+     DECODE
+  ==================================================== */
+
+  .frame--decode {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr auto;
+
+    column-gap: 12px;
+  }
+
+  .frame-decode__header {
+    grid-column: 1 / 5;
+    grid-row: 1;
+
+    padding-top: 24px;
+  }
+
+  .frame-decode__header > :first-child {
+    grid-column: 1 / 3;
+  }
+
+  .frame-decode__header > :last-child {
+    grid-column: 3 / 5;
+
+    text-align: right;
+  }
+
+  .frame-decode__data {
+    grid-column: 1 / 5;
+    grid-row: 3;
+
+    padding-bottom: 20px;
+  }
+
+  .frame-decode__data > :first-child {
+    grid-column: 1 / 3;
+  }
+
+  .frame-decode__data > :last-child {
+    grid-column: 3 / 5;
+
+    text-align: right;
+  }
+
+  /* ====================================================
+     DECODE IMAGE
+  ==================================================== */
+
+  .preview-decode .signal-image {
+    top: 51%;
+    left: 50%;
+
+    width: 100%;
+    height: 48%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  /* ====================================================
+   DECODE PEAK
+==================================================== */
+
+  .frame--decode-peak {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr auto;
+
+    column-gap: 12px;
+  }
+
+  .frame-decode-peak__header {
+    grid-column: 1 / 5;
+    grid-row: 1;
+
+    padding-top: 24px;
+  }
+
+  .frame-decode-peak__header > :first-child {
+    grid-column: 1 / 3;
+  }
+
+  .frame-decode-peak__header > :last-child {
+    grid-column: 3 / 5;
+
+    text-align: right;
+  }
+
+  .frame-decode-peak__data {
+    grid-column: 1 / 5;
+    grid-row: 3;
+
+    row-gap: 8px;
+
+    padding-bottom: 20px;
+  }
+
+  .frame-decode-peak__data > :nth-child(1) {
+    grid-column: 1 / 3;
+  }
+
+  .frame-decode-peak__data > :nth-child(2) {
+    grid-column: 3 / 5;
+
+    text-align: right;
+  }
+
+  .frame-decode-peak__data > :nth-child(3) {
+    grid-column: 1 / 3;
+  }
+
+  .frame-decode-peak__data > :nth-child(4) {
+    grid-column: 3 / 5;
+
+    text-align: right;
+  }
+
+  .preview-decode-peak .signal-image {
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+    height: 58%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  .preview-decode-peak .signal-line {
+    top: 60%;
+  }
+
+  /* ====================================================
+   MESSAGE
+==================================================== */
+
+  .frame--message {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr auto;
+
+    column-gap: 12px;
+  }
+
+  .frame-message__header {
+    grid-column: 1 / 5;
+    grid-row: 1;
+
+    padding-top: 24px;
+  }
+
+  .frame-message__header > :first-child {
+    grid-column: 1 / 3;
+  }
+
+  .frame-message__header > :last-child {
+    grid-column: 3 / 5;
+
+    text-align: right;
+  }
+
+  .frame-message__content {
+    grid-column: 1 / 5;
+    grid-row: 2;
+
+    align-self: center;
+  }
+
+  .frame-message__title {
+    font-size: clamp(4rem, 21vw, 6rem);
+    line-height: 0.8;
+  }
+
+  .frame-message__title span:nth-child(1),
+  .frame-message__title span:nth-child(2),
+  .frame-message__title span:nth-child(3) {
+    margin-left: 0;
+  }
+
+  .frame-message__data {
+    grid-column: 1 / 5;
+    grid-row: 3;
+
+    padding-bottom: 20px;
+  }
+
+  .frame-message__data > :first-child {
+    grid-column: 1 / 3;
+  }
+
+  .frame-message__data > :last-child {
+    grid-column: 3 / 5;
+
+    text-align: right;
+  }
+
+  .preview-message .signal-image {
+    top: 58%;
+    right: -16%;
+    left: auto;
+
+    width: 74%;
+    height: 46%;
+
+    transform: translateY(-50%);
+
+    opacity: 0.3;
+  }
+
+  .preview-message .signal-line {
+    top: 78%;
+  }
+
+  /* ====================================================
      FOOTER
-  -------------------------------------------------- */
+  ==================================================== */
 
   .signal__footer > :first-child {
     grid-column: 1 / 3;

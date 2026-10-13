@@ -17,14 +17,14 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="/src/styles/tokens.css" />
-    <link rel="stylesheet" href="/src/styles/base.css" />
-    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/tokens.css" />
+    <link rel="stylesheet" href="./src/styles/base.css" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
 
     <title>The Last Signal</title>
   </head>
 
-  <body>
+  <body class="preview-message">
     <main class="signal">
       <header class="signal__header technical-data">
         <p>Receiver / 001</p>
@@ -33,7 +33,10 @@
       </header>
 
       <section class="transmission" aria-label="Signal transmission">
-        <!-- FRAME 01 — SEARCHING -->
+        <!-- ==================================================
+             FRAME 01 — SEARCHING
+        =================================================== -->
+
         <div class="frame frame--searching">
           <div class="frame-searching__content">
             <p class="frame__eyebrow">Deep space receiver</p>
@@ -44,7 +47,10 @@
           <p class="frame-searching__hint">Continue transmission</p>
         </div>
 
-        <!-- FRAME 02 — DETECTED -->
+        <!-- ==================================================
+             FRAME 02 — DETECTED
+        =================================================== -->
+
         <div class="frame frame--detected" aria-hidden="true">
           <div class="frame-detected__title">
             <p class="frame__eyebrow">Anomaly / 001</p>
@@ -53,10 +59,6 @@
               <span>Signal</span>
               <span>Detected</span>
             </h2>
-          </div>
-
-          <div class="signal-image">
-            <div class="signal-image__media"></div>
           </div>
 
           <div class="frame-detected__data technical-data">
@@ -73,6 +75,127 @@
           </div>
         </div>
 
+        <!-- ==================================================
+             FRAME 03 — DECODE
+        =================================================== -->
+
+        <div class="frame frame--decode" aria-hidden="true">
+          <div class="frame-decode__header technical-data">
+            <p>
+              Decode /
+              <span class="technical-data__value"> 17.2% </span>
+            </p>
+
+            <p>
+              Source /
+              <span class="technical-data__value"> ? </span>
+            </p>
+          </div>
+
+          <div class="frame-decode__data technical-data">
+            <p>
+              Distance /
+              <span class="technical-data__value"> --.- </span>
+            </p>
+
+            <p>
+              Confidence /
+              <span class="technical-data__value"> 21% </span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================================================
+              FRAME 04 — DECODE PEAK
+        =================================================== -->
+
+        <div class="frame frame--decode-peak" aria-hidden="true">
+          <div class="frame-decode-peak__header technical-data">
+            <p>
+              Decode /
+              <span class="technical-data__value"> 68.4% </span>
+            </p>
+
+            <p>
+              Classification /
+              <span class="technical-data__value"> Unresolved </span>
+            </p>
+          </div>
+
+          <div class="frame-decode-peak__data technical-data">
+            <p>
+              Object /
+              <span class="technical-data__value"> Unknown </span>
+            </p>
+
+            <p>
+              Distance /
+              <span class="technical-data__value"> 18.7 LY </span>
+            </p>
+
+            <p>
+              Signal /
+              <span class="technical-data__value"> 84.2% </span>
+            </p>
+
+            <p>
+              Confidence /
+              <span class="technical-data__value"> 73% </span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================================================
+               FRAME 05 — MESSAGE
+        =================================================== -->
+
+        <div class="frame frame--message" aria-hidden="true">
+          <div class="frame-message__header technical-data">
+            <p>
+              Transmission /
+              <span class="technical-data__value"> Decoded </span>
+            </p>
+
+            <p>
+              Confidence /
+              <span class="technical-data__value"> 97.31% </span>
+            </p>
+          </div>
+
+          <div class="frame-message__content">
+            <h2 class="frame-message__title">
+              <span>We are</span>
+              <span>Not</span>
+              <span>Alone.</span>
+            </h2>
+          </div>
+
+          <div class="frame-message__data technical-data">
+            <p>
+              Origin /
+              <span class="technical-data__value"> Unknown </span>
+            </p>
+
+            <p>
+              Distance /
+              <span class="technical-data__value"> 18.7 LY </span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================================================
+             SHARED IMAGE
+             Este mismo elemento evolucionará entre estados.
+        =================================================== -->
+
+        <div class="signal-image" aria-hidden="true">
+          <div class="signal-image__media"></div>
+        </div>
+
+        <!-- ==================================================
+             SHARED SIGNAL LINE
+        =================================================== -->
+
         <div class="signal-line" aria-hidden="true">
           <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
             <path class="signal-line__path" d="M0 20 H1000" />
@@ -83,12 +206,12 @@
       <footer class="signal__footer technical-data">
         <p>
           Status /
-          <span class="technical-data__value"> Searching </span>
+          <span class="technical-data__value"> Detected </span>
         </p>
 
         <p>
           Signal /
-          <span class="technical-data__value"> 00.00% </span>
+          <span class="technical-data__value"> 12.84% </span>
         </p>
       </footer>
     </main>
