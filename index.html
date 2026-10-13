@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="The Last Signal — An experimental interactive transmission."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/styles/tokens.css" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+
+    <title>The Last Signal</title>
+  </head>
+
+  <body>
+    <main class="signal">
+      <header class="signal__header technical-data">
+        <p>Receiver / 001</p>
+
+        <p class="technical-data__frequency">142.78 MHz</p>
+      </header>
+
+      <section class="transmission" aria-label="Signal transmission">
+        <!-- FRAME 01 — SEARCHING -->
+        <div class="frame frame--searching">
+          <div class="frame-searching__content">
+            <p class="frame__eyebrow">Deep space receiver</p>
+
+            <h1 class="frame-searching__title">Searching</h1>
+          </div>
+
+          <p class="frame-searching__hint">Continue transmission</p>
+        </div>
+
+        <!-- FRAME 02 — DETECTED -->
+        <div class="frame frame--detected" aria-hidden="true">
+          <div class="frame-detected__title">
+            <p class="frame__eyebrow">Anomaly / 001</p>
+
+            <h2>
+              <span>Signal</span>
+              <span>Detected</span>
+            </h2>
+          </div>
+
+          <div class="signal-image">
+            <div class="signal-image__media"></div>
+          </div>
+
+          <div class="frame-detected__data technical-data">
+            <p>
+              Source /
+              <span class="technical-data__value"> Unknown </span>
+            </p>
+
+            <p class="frame-detected__status">
+              <span class="status-dot" aria-hidden="true"></span>
+
+              Active
+            </p>
+          </div>
+        </div>
+
+        <div class="signal-line" aria-hidden="true">
+          <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
+            <path class="signal-line__path" d="M0 20 H1000" />
+          </svg>
+        </div>
+      </section>
+
+      <footer class="signal__footer technical-data">
+        <p>
+          Status /
+          <span class="technical-data__value"> Searching </span>
+        </p>
+
+        <p>
+          Signal /
+          <span class="technical-data__value"> 00.00% </span>
+        </p>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
