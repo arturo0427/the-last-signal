@@ -24,7 +24,7 @@
     <title>The Last Signal</title>
   </head>
 
-  <body class="preview-message">
+  <body class="preview-lost">
     <main class="signal">
       <header class="signal__header technical-data">
         <p>Receiver / 001</p>
@@ -184,8 +184,78 @@
         </div>
 
         <!-- ==================================================
+               FRAME 06 — FAILURE
+          =================================================== -->
+
+        <div class="frame frame--failure" aria-hidden="true">
+          <div class="frame-failure__header technical-data">
+            <p>
+              Transmission /
+              <span class="frame-failure__alert"> Unstable </span>
+            </p>
+
+            <p>
+              Signal /
+              <span class="frame-failure__alert"> 31.08% </span>
+            </p>
+          </div>
+
+          <div class="frame-failure__content">
+            <h2 class="frame-failure__title">
+              <span>We A_E</span>
+              <span>N_T</span>
+              <span>ALO_E.</span>
+            </h2>
+          </div>
+
+          <div class="frame-failure__data technical-data">
+            <p>
+              Integrity /
+              <span class="frame-failure__alert"> Critical </span>
+            </p>
+
+            <p>
+              Packet Loss /
+              <span class="frame-failure__alert"> 68.92% </span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================================================
+              FRAME 07 — LOST
+          =================================================== -->
+
+        <div class="frame frame--lost" aria-hidden="true">
+          <div class="frame-lost__header technical-data">
+            <p>
+              Transmission /
+              <span class="technical-data__value"> Terminated </span>
+            </p>
+
+            <p>
+              Source /
+              <span class="technical-data__value"> Unavailable </span>
+            </p>
+          </div>
+
+          <div class="frame-lost__content">
+            <p class="frame__eyebrow">Connection ended</p>
+
+            <h2 class="frame-lost__title">
+              <span>Signal</span>
+              <span>Lost</span>
+            </h2>
+
+            <p class="frame-lost__time">00:04:18</p>
+          </div>
+
+          <button class="frame-lost__replay" type="button">
+            Replay transmission
+          </button>
+        </div>
+
+        <!-- ==================================================
              SHARED IMAGE
-             Este mismo elemento evolucionará entre estados.
         =================================================== -->
 
         <div class="signal-image" aria-hidden="true">
