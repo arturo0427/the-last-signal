@@ -24,7 +24,7 @@
     <title>The Last Signal</title>
   </head>
 
-  <body class="preview-lost">
+  <body>
     <main class="signal">
       <header class="signal__header technical-data">
         <p>Receiver / 001</p>
@@ -164,9 +164,29 @@
 
           <div class="frame-message__content">
             <h2 class="frame-message__title">
-              <span>We are</span>
-              <span>Not</span>
-              <span>Alone.</span>
+              <span class="frame-message__line">
+                <span class="frame-message__corrupted" aria-hidden="true">
+                  We A_E
+                </span>
+
+                <span class="frame-message__resolved"> We Are </span>
+              </span>
+
+              <span class="frame-message__line">
+                <span class="frame-message__corrupted" aria-hidden="true">
+                  N_T
+                </span>
+
+                <span class="frame-message__resolved"> Not </span>
+              </span>
+
+              <span class="frame-message__line">
+                <span class="frame-message__corrupted" aria-hidden="true">
+                  Alo_E.
+                </span>
+
+                <span class="frame-message__resolved"> Alone. </span>
+              </span>
             </h2>
           </div>
 
@@ -259,7 +279,11 @@
         =================================================== -->
 
         <div class="signal-image" aria-hidden="true">
-          <div class="signal-image__media"></div>
+          <img
+            class="signal-image__media"
+            src="/images/signal-terrain.jpg"
+            alt=""
+          />
         </div>
 
         <!-- ==================================================
@@ -276,12 +300,12 @@
       <footer class="signal__footer technical-data">
         <p>
           Status /
-          <span class="technical-data__value"> Detected </span>
+          <span class="technical-data__value js-status-value"> Searching </span>
         </p>
 
         <p>
           Signal /
-          <span class="technical-data__value"> 12.84% </span>
+          <span class="technical-data__value js-signal-value"> 00.00% </span>
         </p>
       </footer>
     </main>
