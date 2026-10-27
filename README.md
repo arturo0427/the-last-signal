@@ -207,3 +207,9 @@ The main focus was not only learning GSAP syntax, but understanding how to desig
 **The Last Signal**
 
 https://arturo0427.github.io/the-last-signal/
+
+## Contact
+
+[Wilson Arturo Muñoz Ruano](https://www.linkedin.com/in/arturom0427/)
+
+arturo_munoz27@outlook.com
