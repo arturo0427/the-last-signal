@@ -1,7 +1,12 @@
+@import "@fontsource/inter-tight/500.css";
+
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
 :root {
   --color-void: #0a0a09;
   --color-paper: #e8e4d9;
-  --color-muted: #77756e;
+  --color-muted: #85827a;
   --color-signal: #d65336;
   --color-border: rgb(232 228 217 / 16%);
 

@@ -712,6 +712,7 @@
   text-transform: uppercase;
 
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .frame-lost__replay::before {
@@ -1442,5 +1443,57 @@
 
   .signal__footer > :last-child {
     grid-column: 3 / 5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .signal {
+    min-height: 100svh;
+  }
+
+  .transmission {
+    overflow: visible;
+  }
+
+  .frame {
+    display: none;
+  }
+
+  .frame--lost {
+    display: grid;
+
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .signal-image {
+    display: none;
+  }
+
+  .signal-line {
+    top: 50%;
+
+    opacity: 0.3;
+  }
+
+  .signal-line__path {
+    opacity: 0.3;
+  }
+
+  .frame-lost__title span,
+  .frame-lost__time,
+  .frame-lost__replay {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    clip-path: none;
+  }
+
+  .frame-lost__replay {
+    display: none;
   }
 }

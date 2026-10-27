@@ -102,11 +102,11 @@ export function createTransmissionTimeline() {
   const matchMedia = gsap.matchMedia();
 
   matchMedia.add("(min-width: 768px)", () => {
-    createDesktopTimeline();
+    return createDesktopTimeline();
   });
 
   matchMedia.add("(max-width: 767px)", () => {
-    createMobileTimeline();
+    return createMobileTimeline();
   });
 
   return () => matchMedia.revert();
@@ -305,7 +305,6 @@ function createDesktopTimeline() {
       pin: true,
       scrub: 1,
       invalidateOnRefresh: true,
-      markers: true,
       onUpdate: () => {
         updateSystemData(timeline.time());
       },
@@ -1054,6 +1053,25 @@ function createDesktopTimeline() {
   );
 
   updateSystemData(0);
+
+  const handleReplay = () => {
+    const scrollTrigger = timeline.scrollTrigger;
+
+    if (!scrollTrigger) {
+      return;
+    }
+
+    window.scrollTo({
+      top: scrollTrigger.start,
+      behavior: "smooth",
+    });
+  };
+
+  replayButton.addEventListener("click", handleReplay);
+
+  return () => {
+    replayButton.removeEventListener("click", handleReplay);
+  };
 }
 
 function createMobileTimeline() {
@@ -1258,9 +1276,6 @@ function createMobileTimeline() {
       scrub: 1,
 
       invalidateOnRefresh: true,
-
-      markers: true,
-
       onUpdate: () => {
         updateSystemData(timeline.time());
       },
@@ -2004,4 +2019,23 @@ function createMobileTimeline() {
   );
 
   timeline.addLabel("lost", 6.6);
+
+  const handleReplay = () => {
+    const scrollTrigger = timeline.scrollTrigger;
+
+    if (!scrollTrigger) {
+      return;
+    }
+
+    window.scrollTo({
+      top: scrollTrigger.start,
+      behavior: "smooth",
+    });
+  };
+
+  replayButton.addEventListener("click", handleReplay);
+
+  return () => {
+    replayButton.removeEventListener("click", handleReplay);
+  };
 }
